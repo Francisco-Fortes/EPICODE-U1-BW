@@ -3,8 +3,49 @@
 body {
   color: #e7e7eb;
   margin: 0;
+  font-family: "Outfit", sans-serif;
+  color: #e7e7eb;
+}
+
+h1 {
+  font-weight: 400;
+  font-size: 70px;
+  line-height: 0.8em;
+  margin-left: 9.1%;
+  margin-top: 6%;
+  margin-bottom: 0;
+  width: fit-content;
+}
+
+h4 {
+  margin-left: 9.1%;
+  color: #c2128d;
+  font-size: 1.7em;
+  font-weight: 700;
+  margin-bottom: 0;
+}
+.title-span {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 30px;
+}
+
+.first-paragraph {
+  margin-left: 9.1%;
+  margin-top: 0.5%;
+  font-size: 0.9em;
+}
+
+#first-paragraph-span {
+  display: block;
+}
+
+.fw700 {
+  font-weight: 700;
+
   font-family: 'Outfit', sans-serif;
   color: #e7e7e7;
+
 }
 
 .main-container {
@@ -24,7 +65,11 @@ body {
   position: relative;
   width: 20%;
   height: 5%;
+
+  margin-left: 5.5%;
+
   margin-left: 5%;
+
   margin-top: 2%;
 }
 
@@ -34,6 +79,40 @@ img {
   height: 100%;
 }
 
+
+ul {
+  font-size: 0.9em;
+  margin-top: 3%;
+  margin-bottom: 6%;
+  margin-left: 8.1%;
+}
+
+#consent-checkbox {
+  margin-left: 9.1%;
+  cursor: pointer;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background-color: transparent;
+  border: solid #fbfbfc 3px;
+  border-radius: 2px;
+}
+
+#proceed-button {
+  font-size: 0.9em;
+  font-weight: 700;
+  border: 0;
+  color: #093256;
+  background-color: #00ffff;
+  position: relative;
+  width: 18%;
+  left: 73%;
+  bottom: 3%;
+  font-weight: 700;
+  font-size: 25px;
+  padding-top: 1.5%;
+  padding-bottom: 1.5%;
+  box-shadow: #00ffff 0px 0px 30px;
 
 .feedback-container {
   font-size: larger;
@@ -294,5 +373,4 @@ svg {
   top: 20%;
   font-size: 1.5rem;
   text-align: center;
-
 }
