@@ -1,6 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap%27");
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;400;700&display=swap');
 
 body {
+  color: #e7e7eb;
   margin: 0;
   font-family: "Outfit", sans-serif;
   color: #e7e7eb;
@@ -41,6 +42,10 @@ h4 {
 
 .fw700 {
   font-weight: 700;
+
+  font-family: 'Outfit', sans-serif;
+  color: #e7e7e7;
+
 }
 
 .main-container {
@@ -60,7 +65,11 @@ h4 {
   position: relative;
   width: 20%;
   height: 5%;
+
   margin-left: 5.5%;
+
+  margin-left: 5%;
+
   margin-top: 2%;
 }
 
@@ -69,6 +78,7 @@ img {
   width: 100%;
   height: 100%;
 }
+
 
 ul {
   font-size: 0.9em;
@@ -103,4 +113,264 @@ ul {
   padding-top: 1.5%;
   padding-bottom: 1.5%;
   box-shadow: #00ffff 0px 0px 30px;
+
+.feedback-container {
+  font-size: larger;
+  text-align: center;
+  position: relative;
+  height: 70%;
+  width: 70%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.feedback-container h1 {
+  margin: 0;
+}
+
+.feedback-cell {
+  display: inline-block;
+  margin-inline: 10%;
+  margin-block: 2%;
+}
+
+.stars-container {
+  height: 9%;
+  width: 100%;
+  margin-bottom: 7%;
+}
+
+.stars {
+  height: 100%;
+  aspect-ratio: 1/1;
+  display: inline-block;
+  margin-inline: 4px;
+  cursor: pointer;
+}
+
+.feedback-comment {
+  border: 0;
+  background-color: transparent;
+  width: 92%;
+  font-size: x-small;
+}
+
+#feedback-comment {
+  margin-inline: auto;
+  width: 85%;
+  border-bottom: solid 1px;
+  border-color: #af1488;
+}
+
+.feedback-button {
+  font-weight: 700;
+  color: #0b113b;
+  margin-inline: auto;
+  margin-top: 5%;
+  width: 28%;
+  height: 12%;
+  background-color: #00ffff;
+  box-shadow: 0px 0px 50px 2px #00ffff;
+}
+
+.feedback-center {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.left-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 33.4%;
+  height: 90vh;
+}
+
+.left-container .content {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 4rem;
+}
+
+.left-container .percent {
+  position: absolute;
+  top: 80%;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+.left-container .subtext {
+  position: absolute;
+  top: 170%;
+  font-size: 1.6rem;
+  font-weight: 100;
+}
+
+.middle-container {
+  position: absolute;
+  top: 0;
+  left: 33%;
+  right: 0;
+  bottom: 0;
+  width: 33.3%;
+  height: 90vh;
+}
+
+.right-container {
+  position: absolute;
+  top: 0;
+  left: 66%;
+  right: 0;
+  bottom: 0;
+  width: 33.3%;
+  height: 90vh;
+}
+
+.right-container .content {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 4rem;
+}
+
+.right-container .subtext {
+  position: absolute;
+  top: 170%;
+  left: 18%;
+  font-size: 1.6rem;
+  font-weight: 100;
+}
+
+.right-container .percent {
+  position: absolute;
+  top: 80%;
+  bottom: 0;
+  right: 0;
+  left: 10%;
+}
+
+.middle-container h1 {
+  margin: none;
+  padding: none;
+  position: absolute;
+  font-size: 3.5rem;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+.subheading {
+  display: block;
+  height: 10%;
+  width: 100%;
+  position: absolute;
+  top: 20%;
+  right: 0;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  text-align: center;
+  font-size: 1.7rem;
+  font-weight: 500;
+}
+
+:root {
+  --pi: 3.14159265359;
+  --a1: 50;
+  --a2: 25;
+}
+
+.container {
+  margin-top: 40px;
+  width: 400px;
+  height: 400px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translate(-50%, -50%);
+}
+
+p {
+  position: absolute;
+  font-size: 20px;
+  font-weight: 800;
+  color: white;
+}
+
+svg {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes percent2 {
+  to {
+    stroke-dasharray: calc(2 * var(--pi) * 300 * var(--a2) / 100)
+      calc(2 * var(--pi) * 300 * calc(1 - var(--a2) / 100));
+  }
+}
+
+.donut {
+  transform-origin: center center;
+  transition: 0.5s ease-in-out;
+  stroke-dashoffset: 0;
+  cursor: pointer;
+}
+
+.donut:nth-child(1) {
+  transform: rotateZ(-180deg);
+  animation: percent1 1s ease-in-out forwards;
+}
+
+.donut:nth-child(2) {
+  transform: rotateZ(calc(-270deg + calc(var(--a1) * 360deg / 100)));
+  animation: percent2 1s ease-in-out forwards;
+}
+
+.donut-text {
+  text-align: center;
+  font-size: 1rem;
+}
+
+.certificate {
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: 100;
+}
+
+.blue-donut {
+  color: #00ffff;
+}
+
+.rate-us {
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 250px;
+  height: 60px;
+  border: 2px solid white;
+  background-color: transparent;
+}
+
+.rate-us p {
+  margin: 0;
+  position: relative;
+  top: 20%;
+  font-size: 1.5rem;
+  text-align: center;
 }
