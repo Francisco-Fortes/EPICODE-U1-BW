@@ -1,9 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100;400;700&display=swap");
 
 body {
   color: #e7e7eb;
   margin: 0;
-  font-family: 'Outfit', sans-serif;
+  font-family: "Outfit", sans-serif;
   color: #e7e7eb;
 }
 
@@ -43,7 +43,7 @@ h4 {
 .fw700 {
   font-weight: 700;
 
-  font-family: 'Outfit', sans-serif;
+  font-family: "Outfit", sans-serif;
   color: #e7e7e7;
 }
 
@@ -285,7 +285,7 @@ ul {
 :root {
   --pi: 3.14159265359;
   --a1: 50;
-  --a2: 25;
+  --a2: 29.5;
 }
 
 .container {
@@ -377,4 +377,24 @@ svg {
   top: 20%;
   font-size: 1.5rem;
   text-align: center;
+}
+
+.timer-container {
+  /* margin-top: 50px; */
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  top: 10%;
+  right: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* transform: translate(-50%, -50%); */
+}
+
+.timer-container p {
+  text-align: center;
+}
+#seconds {
+  font-size: 35px;
 }
