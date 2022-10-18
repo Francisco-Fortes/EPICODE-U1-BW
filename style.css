@@ -88,7 +88,6 @@ ul {
 #consent-checkbox {
   margin-left: 9.1%;
   cursor: pointer;
-  appearance: none;
   width: 20px;
   height: 20px;
   background-color: transparent;
@@ -111,6 +110,7 @@ ul {
   padding-top: 1.5%;
   padding-bottom: 1.5%;
   box-shadow: #00ffff 0px 0px 30px;
+  cursor: pointer;
 }
 
 .feedback-container {
