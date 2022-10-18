@@ -1,0 +1,16 @@
+svg {
+  width: 500px;
+  height: 500px;
+  stroke: #00ffff;
+  stroke-width: 30px;
+  fill: transparent;
+  background-color: beige;
+}
+
+svg #circle1 {
+  width: 500px;
+  height: 500px;
+  stroke: #99699d;
+  stroke-width: 30px;
+  fill: transparent;
+}
