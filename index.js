@@ -1,21 +1,19 @@
-
 // Timer------------------------------------------------------------
 
-let difficulty = 60;
-let time = difficulty + 1;
-let timeInDonut = document.getElementById("seconds");
+let difficulty = 60
+let time = difficulty + 1
+let timeInDonut = document.getElementById('seconds')
 
-setInterval(updateCountdown, 1000);
+//setInterval(updateCountdown, 1000)
 function updateCountdown() {
   // console.log(seconds);
-  time--;
+  time--
   if (time > 0) {
-    timeInDonut.innerText = time;
+    timeInDonut.innerText = time
   } else {
-    timeInDonut.innerText = "TimeOut!";
+    timeInDonut.innerText = 'TimeOut!'
   }
 }
-console.log(time);
 
 // This function will check if the checkbox on the welcome page has been selected and if not, it will show an error
 
@@ -29,3 +27,14 @@ const isCheckboxTicked = function () {
   }
 }
 
+//This function will select all the stars
+const highlightStars = function (event) {
+  starsContainer = document.getElementById('stars-container')
+  let stars = starsContainer.getElementsByTagName('img')
+  let clickedStar = event.target.alt
+
+  console.log(stars[clickedStar - 1].alt)
+  for (let i = 0; i < clickedStar; i++) {
+    stars[i].parentNode.classList.add('selected-stars')
+  }
+}
