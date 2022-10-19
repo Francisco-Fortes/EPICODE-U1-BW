@@ -162,13 +162,15 @@ ul {
   margin-left: 4%;
   margin-top: 1.5%;
 }
-.button-class:hover {
+
+.button-class-selected {
   /* WIP: Add shadow gradient bottom-top */
   cursor: pointer;
   background-color: #b20088;
   border-radius: 30px;
   border-width: 3px;
   border-color: #e7e7e7be;
+  /* box-shadow: inset 0px 33px 25px 0 #b20088c4, inset 0 66px 15px 0px #5c0949d0; */
 }
 
 #next-button-container {
@@ -178,7 +180,7 @@ ul {
   left: 70%;
 }
 
-.next-button-class {
+#next-button {
   cursor: pointer;
   border: none;
   color: #093256;
@@ -194,6 +196,7 @@ ul {
   padding-top: 1%;
   padding-bottom: 1%;
   padding-right: 2%;
+  display: none;
 }
 
 #question-counter {
