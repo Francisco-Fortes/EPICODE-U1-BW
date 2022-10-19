@@ -82,7 +82,6 @@ ul {
 #consent-checkbox {
   margin-left: 9.1%;
   cursor: pointer;
-  appearance: none;
   width: 20px;
   height: 20px;
   background-color: transparent;
@@ -211,6 +210,7 @@ ul {
 
 #question-counter span {
   color: #9a1381;
+  cursor: pointer;
 }
 
 .feedback-container {
@@ -385,7 +385,7 @@ ul {
 :root {
   --pi: 3.14159265359;
   --a1: 50;
-  --a2: 25;
+  --a2: 29.5;
 }
 
 .container {
@@ -466,10 +466,35 @@ svg {
   background-color: transparent;
 }
 
+.rate-us:hover {
+  cursor: pointer;
+  background-color: #00ffff;
+}
+
 .rate-us p {
   margin: 0;
   position: relative;
   top: 20%;
   font-size: 1.5rem;
   text-align: center;
+}
+
+.timer-container {
+  /* margin-top: 50px; */
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  top: 10%;
+  right: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* transform: translate(-50%, -50%); */
+}
+
+.timer-container p {
+  text-align: center;
+}
+#seconds {
+  font-size: 35px;
 }
