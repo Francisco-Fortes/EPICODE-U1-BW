@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css" />
+    <title>Benchmark</title>
+    <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
     <div class="main-container">
@@ -22,6 +22,36 @@
       <div id="question-counter">
         <p>QUESTION 1<span> / 10</span></p>
       </div>
+      <div class="timer-container">
+        <p>
+          <span id="timer-p-1">Seconds</span>
+          <br />
+          <span id="seconds"></span>
+          <br />
+          <span id="timer-p-2">remaining</span>
+        </p>
+        <svg xmlns="http://www.w3.org/2000/svg">
+          <circle
+            cx="100"
+            cy="100"
+            class="donut"
+            r="90"
+            stroke-width="15"
+            stroke="#00FFFF"
+            fill="none"
+          />
+          <circle
+            cx="100"
+            cy="100"
+            class="donut"
+            r="90"
+            stroke-width="15"
+            stroke="#99699C"
+            fill="none"
+          />
+        </svg>
+      </div>
+      <button onclick="updateCountdown()"></button>
     </div>
     <script src="./index.js"></script>
   </body>
