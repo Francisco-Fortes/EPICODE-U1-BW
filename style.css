@@ -119,6 +119,7 @@ ul {
 }
 
 #question-container {
+  display: block;
   position: relative;
   text-align: center;
   top: 11%;
