@@ -4,7 +4,6 @@ body {
   color: #e7e7eb;
   margin: 0;
   font-family: "Outfit", sans-serif;
-  color: #e7e7eb;
 }
 
 h1 {
@@ -12,7 +11,7 @@ h1 {
   font-size: 70px;
   line-height: 0.8em;
   margin-left: 9.1%;
-  margin-top: 6%;
+  margin-top: 8%;
   margin-bottom: 0;
   width: fit-content;
 }
@@ -27,13 +26,14 @@ h4 {
 .title-span {
   display: block;
   font-weight: 700;
-  margin-bottom: 30px;
 }
 
 .first-paragraph {
   margin-left: 9.1%;
   margin-top: 0.5%;
   font-size: 0.9em;
+  font-weight: 400;
+  margin-bottom: 30px;
 }
 
 #first-paragraph-span {
@@ -42,9 +42,7 @@ h4 {
 
 .fw700 {
   font-weight: 700;
-
   font-family: "Outfit", sans-serif;
-  color: #e7e7e7;
 }
 
 .main-container {
@@ -64,11 +62,7 @@ h4 {
   position: relative;
   width: 20%;
   height: 5%;
-
-  margin-left: 5.5%;
-
   margin-left: 5%;
-
   margin-top: 2%;
 }
 
@@ -80,7 +74,7 @@ img {
 
 ul {
   font-size: 0.9em;
-  margin-top: 3%;
+  margin-top: 7%;
   margin-bottom: 6%;
   margin-left: 8.1%;
 }
@@ -95,6 +89,18 @@ ul {
   border-radius: 2px;
 }
 
+/* #consent-checkbox {
+   WIP: Recreate the checked part 
+  margin-left: 9.1%;
+  cursor: pointer;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background-color: transparent;
+  border: solid #fbfbfc 3px;
+  border-radius: 2px;
+} */
+
 #proceed-button {
   font-size: 0.9em;
   font-weight: 700;
@@ -104,12 +110,106 @@ ul {
   position: relative;
   width: 18%;
   left: 73%;
-  bottom: 3%;
+  bottom: 6%;
   font-weight: 700;
   font-size: 25px;
   padding-top: 1.5%;
   padding-bottom: 1.5%;
   box-shadow: #00ffff 0px 0px 30px;
+}
+
+#question-container {
+  position: relative;
+  text-align: center;
+  top: 11%;
+  font-size: 2rem;
+}
+
+#question {
+  font-weight: 400;
+}
+
+#question span {
+  display: block;
+  font-weight: 700;
+}
+
+#buttons-container {
+  position: relative;
+  width: 80%;
+  text-align: center;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.button-class {
+  /* WIP: Check with longer answer, are we going to leave the same width for every answer or is it going to be adjusting? */
+  /* WIP: Check with 2 answers, are they centered? */
+  /* WIP: Add black shadow gradient bottom-top */
+  height: 50px;
+  width: fit-content;
+  min-width: 40%;
+  font-weight: 700;
+  appearance: none;
+  background-color: rgba(128, 128, 128, 0.185);
+  border-radius: 30px;
+  border-width: 3px;
+  border-color: #e7e7e7be;
+  color: #e7e7eb;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  margin-left: 4%;
+  margin-top: 1.5%;
+}
+.button-class:hover {
+  /* WIP: Add shadow gradient bottom-top */
+  cursor: pointer;
+  background-color: #b20088;
+  border-radius: 30px;
+  border-width: 3px;
+  border-color: #e7e7e7be;
+}
+
+#next-button-container {
+  /* WIP: Is it adjusting when it has 2 answers? */
+  position: relative;
+  top: 17%;
+  left: 70%;
+}
+
+.next-button-class {
+  cursor: pointer;
+  border: none;
+  color: #093256;
+  background-color: #00ffff;
+  background-image: url(./assets/arrow-forward-outline.svg);
+  background-size: 20px;
+  background-repeat: no-repeat;
+  background-position: 75%;
+  position: relative;
+  width: 13%;
+  font-weight: 700;
+  font-size: 20px;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  padding-right: 2%;
+}
+
+#question-counter {
+  position: relative;
+  text-align: center;
+  top: 9%;
+  left: 20%;
+}
+
+#question-counter p {
+  letter-spacing: 2px;
+  font-size: 16px;
+}
+
+#question-counter span {
+  color: #9a1381;
   cursor: pointer;
 }
 
