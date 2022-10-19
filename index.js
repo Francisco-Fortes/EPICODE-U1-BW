@@ -67,18 +67,46 @@ const generateAnswers = function () {
   }
 };
 
+const nextButton = document.getElementById("next-button");
 const clickAnswers = function (event) {
-  if (event.target.innerText === correct_answer) {
-    score++;
-  } else {
-    console.log("incorrect");
+  const allButtons = document.getElementsByClassName("button-class");
+  for (i = 0; i < allButtons.length; i++) {
+    allButtons[i].classList.remove("button-class-selected");
   }
+  event.target.classList.add("button-class-selected");
+  nextButton.style.display = "block";
 };
 
-const generateNextButton = function () {
-  const nextButton = document.createElement("button");
-  nodeNextButton.appendChild(nextButton);
-  nextButton.innerText = "Next";
-  nextButton.classList.add("next-button-class");
-  nextButton.setAttribute("onclick", "clickNext(event)");
-};
+let randomNumbers = [];
+
+function randomNumberGenerator() {
+  let number = Math.floor(Math.random() * 15);
+  return number;
+}
+
+function createQuestionArray() {
+  let count = 0;
+
+  while (count < 15) {
+    let number = randomNumberGenerator();
+    if (!randomNumbers.includes(number)) {
+      randomNumbers.push(number);
+      count++;
+    }
+  }
+}
+
+const allQuestions = [];
+const selectedQuestions = [];
+
+for (let i = 0; i < randomNumbers.length; i++) {
+  selectedQuestions.push(allQuestions[randomNumbers[i]]);
+}
+
+// const generateNextButton = function () {
+//   const nextButton = document.createElement("button");
+//   nodeNextButton.appendChild(nextButton);
+//   nextButton.innerText = "Next";
+//   nextButton.classList.add("next-button-class");
+//   nextButton.setAttribute("onclick", "clickNext(event)");
+// };
