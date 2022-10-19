@@ -1,14 +1,4 @@
-
 let selectedQuestions = []
-=======
-/**
- * Updates the donut chart's percent number and the CSS positioning of the progress bar.
- * Also allows you to set if it is a donut or pie chart
- * @param  {string}  el      The selector for the donut to update. '#thing'
- * @param  {number}  percent Passing in 22.3 will make the chart show 22%
- * @param  {boolean} donut   True shows donut, false shows pie
- */
-
 
 const questions = [
   {
@@ -41,7 +31,6 @@ const questions = [
     incorrect_answers: ['True'],
   },
 ]
-
 
 const randomNumberGenerator = function () {
   let numberOfQuestions = questions.length
@@ -106,15 +95,16 @@ const changeAnswersClass = function (event) {
   }
   event.target.classList.add('button-class-selected')
   nextButton.style.display = 'block'
-=======
-let score = 0
-const buttonsContainer = document.getElementById('buttons-container')
-const nodeNextButton = document.getElementById('next-button-container')
-const questionCounter = document.getElementById('question-counter')
-const quizzQuestions = []
-const generateQuestion = function () {
-  let listOfQuestions = questions[2]
-  displayQuestion.innerText = listOfQuestions.question
+
+  let score = 0
+  const buttonsContainer = document.getElementById('buttons-container')
+  const nodeNextButton = document.getElementById('next-button-container')
+  const questionCounter = document.getElementById('question-counter')
+  const quizzQuestions = []
+  const generateQuestion = function () {
+    let listOfQuestions = questions[2]
+    displayQuestion.innerText = listOfQuestions.question
+  }
 }
 
 const arrayMergedAnswers = []
@@ -150,7 +140,6 @@ const generateNextButton = function () {
   nextButton.innerText = 'Next'
   nextButton.classList.add('next-button-class')
   nextButton.setAttribute('onclick', 'clickNext(event)')
-
 }
 
 // Timer------------------------------------------------------------
@@ -216,7 +205,6 @@ window.onload = function () {
   displayQuestion()
   return selectedQuestions
 }
-=======
 
 //This function will select all the stars
 const highlightStars = function (event) {
@@ -229,4 +217,3 @@ const highlightStars = function (event) {
     stars[i].parentNode.classList.add('selected-stars')
   }
 }
-
