@@ -249,6 +249,11 @@ ul {
   display: inline-block;
   margin-inline: 4px;
   cursor: pointer;
+  filter: grayscale();
+}
+
+.selected-stars {
+  filter: none;
 }
 
 .feedback-comment {
