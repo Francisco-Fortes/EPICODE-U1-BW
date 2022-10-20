@@ -207,6 +207,7 @@ const displayQuestion = function () {
     arrayMergedAnswers.push(incorrect_answers[i])
   }
   arrayMergedAnswers.push(correct_answer)
+  arrayMergedAnswers = arrayMergedAnswers.sort((a, b) => 0.5 - Math.random())
 
   for (i = 0; i < arrayMergedAnswers.length; i++) {
     const allButtons = document.createElement('button')
