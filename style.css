@@ -13,7 +13,6 @@ h1 {
   margin-left: 9.1%;
   margin-top: 8%;
   margin-bottom: 0;
-  width: fit-content;
 }
 
 h4 {
@@ -47,8 +46,8 @@ h4 {
 
 .main-container {
   position: absolute;
-  aspect-ratio: 1.7/1;
-  height: 90vh;
+  height: 100%;
+  width: 100%;
   background-image: url(./assets/bg.jpg);
   background-repeat: no-repeat;
   background-size: cover;
@@ -90,7 +89,7 @@ ul {
 }
 
 /* #consent-checkbox {
-   WIP: Recreate the checked part 
+  WIP: Recreate the checked part 
   margin-left: 9.1%;
   cursor: pointer;
   appearance: none;

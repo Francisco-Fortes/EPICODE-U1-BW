@@ -290,7 +290,7 @@ console.log(time);
 
 const isCheckboxTicked = function () {
   if (document.getElementById("consent-checkbox").checked) {
-    alert("Your ready to take the exam!");
+    window.location.href = "benchmark.html";
   } else {
     alert(
       "You must agree to answer the questions by yourself before proceeding"
