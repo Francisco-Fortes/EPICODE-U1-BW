@@ -171,7 +171,10 @@ ul {
   cursor: pointer;
   background-color: #b20088;
   border-radius: 30px;
-  border: 10px solid;
+  border-width: 3px;
+  border-color: #e7e7e7be;
+  /* Not working code below*/
+  /* border: 10px solid;
   border-image-slice: 1;
   border-width: 5px;
   border-radius: 100rem;
@@ -185,7 +188,7 @@ ul {
     linear-gradient(101deg, #78e4ff, #ff48fa);
   background-origin: border-box;
   background-clip: border-box;
-  box-shadow: 2px 1000px 1px rgba(255, 255, 255, 0) inset;
+  box-shadow: 2px 1000px 1px rgba(255, 255, 255, 0) inset; */
 }
 
 /* .button-class-selected::before {
