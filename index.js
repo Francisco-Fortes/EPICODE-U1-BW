@@ -189,20 +189,29 @@ let wrongAnswersScore = (wrongScore / selectedQuestions.length) * 100
 
 // --------------------------------------------------
 
-const buttonsContainer = document.getElementById('buttons-container')
-const nodeNextButton = document.getElementById('next-button-container')
-const questionCounter = document.getElementById('question-counter')
-const questionText = document.getElementById('question')
 
+const buttonsContainer = document.getElementById("buttons-container");
+const nodeNextButton = document.getElementById("next-button-container");
+const questionCounter = document.getElementById("question-counter");
+const questionText = document.getElementById("question");
+let difficulty;
 const displayQuestion = function () {
-  let x = document.getElementById('x')
-  x.innerHTML = 'QUESTION ' + (questionNumber + 1) + ` / <span>10</span>`
-  let listOfQuestions = selectedQuestions[questionNumber]
-  questionText.innerText = listOfQuestions.question
+  let x = document.getElementById("x");
+  x.innerHTML = "QUESTION " + (questionNumber + 1) + ` / <span>10</span>`;
+  let listOfQuestions = selectedQuestions[questionNumber];
+  questionText.innerText = listOfQuestions.question;
+  if (selectedQuestions[questionNumber].difficulty === "hard") {
+    difficulty = 85;
+  } else if (selectedQuestions[questionNumber].difficulty === "medium") {
+    difficulty = 60;
+  } else if (selectedQuestions[questionNumber].difficulty === "easy") {
+    difficulty = 30;
+  }
+  const arrayMergedAnswers = [];
+  let incorrect_answers = selectedQuestions[questionNumber].incorrect_answers;
+  let correct_answer = selectedQuestions[questionNumber].correct_answer;
 
-  let arrayMergedAnswers = []
-  let incorrect_answers = selectedQuestions[questionNumber].incorrect_answers
-  let correct_answer = selectedQuestions[questionNumber].correct_answer
+
   for (i = 0; i < incorrect_answers.length; i++) {
     arrayMergedAnswers.push(incorrect_answers[i])
   }
@@ -219,7 +228,10 @@ const displayQuestion = function () {
       'changeAnswersClass(event); submittedAnswer(event)',
     )
   }
-}
+
+  timer();
+};
+
 
 const nextButton = document.getElementById('next-button')
 
@@ -271,9 +283,10 @@ const generateNextButton = function () {
 
 // Timer------------------------------------------------------------
 
-let difficulty = 60
-let time = difficulty + 1
-let timeInDonut = document.getElementById('seconds')
+
+let time = difficulty + 1;
+let timeInDonut = document.getElementById("seconds");
+
 
 setInterval(updateCountdown, 1000)
 function updateCountdown() {
@@ -290,8 +303,10 @@ console.log(time)
 // This function will check if the checkbox on the welcome page has been selected and if not, it will show an error
 
 const isCheckboxTicked = function () {
-  if (document.getElementById('consent-checkbox').checked) {
-    window.location.href = 'benchmark.html'
+
+  if (document.getElementById("consent-checkbox").checked) {
+    window.location.href = "benchmark.html";
+
   } else {
     alert(
       'You must agree to answer the questions by yourself before proceeding',
@@ -306,13 +321,17 @@ const submittedAnswer = function (event) {
 }
 
 const clearDOM = function () {
-  questionText.innerHTML = ''
-  buttonsContainer.innerHTML = ''
-}
+
+  clearInterval(timerInterval);
+  questionText.innerHTML = "";
+  buttonsContainer.innerHTML = "";
+  let timer = document.getElementById("app");
+  timer.innerHTML = "";
+};
 
 const nextQuestion = function () {
-  let correct_answer = selectedQuestions[questionNumber].correct_answer
-  let given_answer = clickedButton
+  let correct_answer = selectedQuestions[questionNumber].correct_answer;
+  let given_answer = clickedButton;
 
   if (questionNumber !== selectedQuestions.length - 1) {
     if (given_answer === correct_answer) {
@@ -326,7 +345,10 @@ const nextQuestion = function () {
     if (given_answer === correct_answer) {
       score++
     }
-    resultsPage()
+
+    clearInterval(timerInterval);
+    resultsPage();
+
   }
 }
 window.onload = function () {
@@ -357,6 +379,7 @@ console.log(score)
 console.log(congratulations)
 console.log((score / selectedQuestions.length) * 100)
 const resultsPage = function () {
+  clearDOM();
   if ((score / selectedQuestions.length) * 100 >= 60) {
     congratulations = 'Congratulations!'
     subText = 'You passed the exam'
@@ -374,10 +397,12 @@ const resultsPage = function () {
     subText = 'Study more!'
   }
   document.documentElement.style.setProperty(
-    '--a2',
-    (score / selectedQuestions.length) * 50,
-  )
-  document.getElementById('main-container').innerHTML =
+
+    "--a2",
+    (score / selectedQuestions.length) * 50
+  );
+  document.getElementById("main-container").innerHTML =
+
     `
   <div class="left-container">
         <div class="content">
@@ -454,31 +479,33 @@ const resultsPage = function () {
 }
 
 // -------------------------New Timer----------------------------------------------------------
-const FULL_DASH_ARRAY = 283
-const WARNING_THRESHOLD = 10
-const ALERT_THRESHOLD = 5
 
-const COLOR_CODES = {
-  info: {
-    color: 'green',
-  },
-  warning: {
-    color: 'orange',
-    threshold: WARNING_THRESHOLD,
-  },
-  alert: {
-    color: 'red',
-    threshold: ALERT_THRESHOLD,
-  },
-}
+const timer = function () {
+  const FULL_DASH_ARRAY = 283;
+  const WARNING_THRESHOLD = 10;
+  const ALERT_THRESHOLD = 5;
 
-const TIME_LIMIT = 10
-let timePassed = 0
-let timeLeft = TIME_LIMIT
-let timerInterval = null
-let remainingPathColor = COLOR_CODES.info.color
+  const COLOR_CODES = {
+    info: {
+      color: "green",
+    },
+    warning: {
+      color: "orange",
+      threshold: WARNING_THRESHOLD,
+    },
+    alert: {
+      color: "red",
+      threshold: ALERT_THRESHOLD,
+    },
+  };
 
-document.getElementById('app').innerHTML = `
+  let TIME_LIMIT = difficulty;
+  let timePassed = 0;
+  let timeLeft = TIME_LIMIT;
+  let remainingPathColor = COLOR_CODES.info.color;
+
+  document.getElementById("app").innerHTML = `
+
 <div class="base-timer">
   <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
     <g class="base-timer__circle">
@@ -502,60 +529,70 @@ document.getElementById('app').innerHTML = `
 </div>
 `
 
-startTimer()
 
-function onTimesUp() {
-  clearInterval(timerInterval)
-  nextQuestion()
-}
+  startTimer();
 
-function startTimer() {
-  timerInterval = setInterval(() => {
-    timePassed = timePassed += 1
-    timeLeft = TIME_LIMIT - timePassed
-    document.getElementById('base-timer-label').innerHTML = formatTime(timeLeft)
-    setCircleDasharray()
-    setRemainingPathColor(timeLeft)
+  function startTimer() {
+    timerInterval = setInterval(() => {
+      timePassed = timePassed += 1;
+      timeLeft = TIME_LIMIT - timePassed;
+      document.getElementById("base-timer-label").innerHTML =
+        formatTime(timeLeft);
+      setCircleDasharray();
+      setRemainingPathColor(timeLeft);
 
-    if (timeLeft === 0) {
-      onTimesUp()
+      if (timeLeft === 0) {
+        onTimesUp();
+      }
+    }, 1000);
+  }
+  function onTimesUp() {
+    clearInterval(timerInterval);
+    nextQuestion();
+  }
+  function formatTime(time) {
+    let seconds = time;
+
+    if (seconds < 10) {
+      seconds = `0${seconds}`;
     }
-  }, 1000)
-}
 
-function formatTime(time) {
-  let seconds = time
-
-  if (seconds < 10) {
-    seconds = `0${seconds}`
+    return seconds;
   }
 
-  return seconds
-}
-
-function setRemainingPathColor(timeLeft) {
-  const { alert, warning, info } = COLOR_CODES
-  if (timeLeft <= alert.threshold) {
-    document
-      .getElementById('base-timer-path-remaining')
-      .classList.remove(warning.color)
-    document
-      .getElementById('base-timer-path-remaining')
-      .classList.add(alert.color)
-  } else if (timeLeft <= warning.threshold) {
-    document
-      .getElementById('base-timer-path-remaining')
-      .classList.remove(info.color)
-    document
-      .getElementById('base-timer-path-remaining')
-      .classList.add(warning.color)
+  function setRemainingPathColor(timeLeft) {
+    const { alert, warning, info } = COLOR_CODES;
+    if (timeLeft <= alert.threshold) {
+      document
+        .getElementById("base-timer-path-remaining")
+        .classList.remove(warning.color);
+      document
+        .getElementById("base-timer-path-remaining")
+        .classList.add(alert.color);
+    } else if (timeLeft <= warning.threshold) {
+      document
+        .getElementById("base-timer-path-remaining")
+        .classList.remove(info.color);
+      document
+        .getElementById("base-timer-path-remaining")
+        .classList.add(warning.color);
+    }
   }
-}
 
-function calculateTimeFraction() {
-  const rawTimeFraction = timeLeft / TIME_LIMIT
-  return rawTimeFraction - (1 / TIME_LIMIT) * (1 - rawTimeFraction)
-}
+  function calculateTimeFraction() {
+    const rawTimeFraction = timeLeft / TIME_LIMIT;
+    return rawTimeFraction - (1 / TIME_LIMIT) * (1 - rawTimeFraction);
+  }
+
+  function setCircleDasharray() {
+    const circleDasharray = `${(
+      calculateTimeFraction() * FULL_DASH_ARRAY
+    ).toFixed(0)} 283`;
+    document
+      .getElementById("base-timer-path-remaining")
+      .setAttribute("stroke-dasharray", circleDasharray);
+  }
+};
 
 function setCircleDasharray() {
   const circleDasharray = `${(
