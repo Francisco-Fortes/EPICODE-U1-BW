@@ -102,11 +102,15 @@ ul {
 } */
 
 #proceed-button {
+  cursor: pointer;
   font-size: 0.9em;
   font-weight: 700;
   border: 0;
   color: #093256;
   background-color: #00ffff;
+  background-image: url(./assets/fixed-arrow-sharp-outline.png);
+  background-repeat: no-repeat;
+  background-position: right;
   position: relative;
   width: 18%;
   left: 73%;
