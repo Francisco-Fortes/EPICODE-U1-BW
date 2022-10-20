@@ -43,13 +43,17 @@
         </li>
       </ul>
       <input
+        class="consent-checkbox"
         id="consent-checkbox"
         type="checkbox"
         name="consent"
         value="agreement"
         onchange="activateButton(event)"
       />
-      I promise to answer myself without help from anyone
+
+      <label for="consent-checkbox">
+        I promise to answer myself without help from anyone
+      </label>
       <br />
       <input
         onclick="isCheckboxTicked()"

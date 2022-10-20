@@ -79,14 +79,33 @@ ul {
   margin-left: 8.1%;
 }
 
-#consent-checkbox {
+.consent-checkbox {
+  appearance: none;
+  accent-color: #0c113b !important;
   margin-left: 9.1%;
   cursor: pointer;
   width: 20px;
   height: 20px;
-  background-color: transparent;
+  color: green;
   border: solid #fbfbfc 3px;
   border-radius: 2px;
+}
+.consent-checkbox:checked {
+  background-color: white;
+  margin-left: 9.1%;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  color: green;
+  border: solid #fbfbfc 3px;
+  border-radius: 2px;
+}
+
+label,
+input {
+  display: inline-block;
+  vertical-align: middle;
+  font-weight: 700;
 }
 
 /* #consent-checkbox {
@@ -619,4 +638,10 @@ h4 {
   left: 37px;
   right: 0;
   font-weight: 300;
+}
+
+.consent {
+  position: absolute;
+  top: 671px;
+  left: 160px;
 }
