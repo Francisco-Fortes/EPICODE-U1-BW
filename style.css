@@ -487,9 +487,9 @@ svg {
   font-size: 1.5rem;
   text-align: center;
 }
-
+/* 
 .timer-container {
-  /* margin-top: 50px; */
+  margin-top: 50px;
   width: 200px;
   height: 200px;
   position: absolute;
@@ -498,7 +498,7 @@ svg {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* transform: translate(-50%, -50%); */
+  transform: translate(-50%, -50%);
 }
 
 .timer-container p {
@@ -506,4 +506,62 @@ svg {
 }
 #seconds {
   font-size: 35px;
+} */
+
+/* ------------------------------------------------------------------------- */
+.base-timer {
+  position: absolute;
+  left: 85%;
+  top: 4%;
+  width: 150px;
+  height: 150px;
 }
+
+.base-timer__svg {
+  transform: scaleX(-1);
+}
+
+.base-timer__circle {
+  fill: none;
+  stroke: none;
+}
+
+.base-timer__path-elapsed {
+  stroke-width: 7px;
+  stroke: #9a6a9d;
+}
+
+.base-timer__path-remaining {
+  stroke-width: 7px;
+  stroke-linecap: round;
+  transform: rotate(90deg);
+  transform-origin: center;
+  transition: 1s linear all;
+  fill-rule: nonzero;
+  stroke: currentColor;
+}
+
+.base-timer__path-remaining.green {
+  color: #00ffff;
+}
+
+.base-timer__path-remaining.orange {
+  color: orange;
+}
+
+.base-timer__path-remaining.red {
+  color: red;
+}
+
+.base-timer__label {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+}
+
+/* ------------------------------------------------------- */
