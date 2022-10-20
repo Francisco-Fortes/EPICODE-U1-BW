@@ -284,6 +284,7 @@ input:focus {
   height: 12%;
   background-color: #00ffff;
   box-shadow: 0px 0px 50px 2px #00ffff;
+  cursor: pointer;
 }
 
 .feedback-center {
