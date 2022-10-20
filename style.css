@@ -192,8 +192,34 @@ input {
   border-radius: 30px;
   border-width: 3px;
   border-color: #e7e7e7be;
-  /* box-shadow: inset 0px 33px 25px 0 #b20088c4, inset 0 66px 15px 0px #5c0949d0; */
+  /* Not working code below*/
+  /* border: 10px solid;
+  border-image-slice: 1;
+  border-width: 5px;
+  border-radius: 100rem;
+  color: black;
+  box-shadow: 0 0 6px 0 rgba(157, 96, 212, 0.5);
+  border: solid 3px transparent;
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0),
+      rgba(255, 255, 255, 0)
+    ),
+    linear-gradient(101deg, #78e4ff, #ff48fa);
+  background-origin: border-box;
+  background-clip: border-box;
+  box-shadow: 2px 1000px 1px rgba(255, 255, 255, 0) inset; */
 }
+
+/* .button-class-selected::before {
+  position: absolute;
+  inset: 0;
+  border-radius: 50px; 
+  padding: 10px; 
+  background:linear-gradient(45deg,red,blue); 
+  -webkit-mask: 
+     linear-gradient(#fff 0 0) content-box, 
+     linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor; */
 
 /* #next-button-container {
   position: absolute;
