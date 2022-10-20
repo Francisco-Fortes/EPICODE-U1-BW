@@ -348,14 +348,17 @@ input:focus {
   bottom: 0;
   width: 33.3%;
   height: 90vh;
+  text-align: center;
 }
 
 .right-container .content {
   position: absolute;
+  padding-left: 40px;
   top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 4rem;
+  text-align: center;
 }
 
 .right-container .subtext {
@@ -364,6 +367,9 @@ input:focus {
   left: 18%;
   font-size: 1.6rem;
   font-weight: 100;
+  text-align: center;
+  white-space: nowrap;
+  padding-left: 20px;
 }
 
 .right-container .percent {
