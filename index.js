@@ -402,13 +402,14 @@ const nextQuestion = function () {
     }
     clickedButton = ''
     questionNumber++
+    hideNextButton()
     clearDOM()
     displayQuestion()
   } else {
     if (given_answer === correct_answer) {
       score++
     }
-
+    hideNextButton()
     clearInterval(timerInterval)
     resultsPage()
   }
@@ -417,6 +418,12 @@ window.onload = function () {
   generateQuestions()
   displayQuestion()
   return selectedQuestions
+}
+
+function hideNextButton() {
+  button = document.getElementById('next-button')
+  console.log(button)
+  button.style.display = 'none'
 }
 
 //This function will select all the stars
