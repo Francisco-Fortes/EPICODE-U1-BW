@@ -667,5 +667,11 @@ function setCircleDasharray() {
 }
 
 const giveFeedback = function () {
-  window.location.href = 'feedback.html'
-}
+
+  window.location.href = "feedback.html";
+};
+
+const welcomePage = function () {
+  window.location.href = "welcome-page.html";
+};
+
