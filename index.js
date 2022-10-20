@@ -480,7 +480,7 @@ const resultsPage = function () {
       </div>
 
       <div class="middle-container">
-        <h1>Results</h1>
+        <h1 class="results-header">Results</h1>
         <p class="subheading">The summary of your answers:</p>
         <div class="container">
           <p class="donut-text">` +
@@ -667,11 +667,9 @@ function setCircleDasharray() {
 }
 
 const giveFeedback = function () {
-
-  window.location.href = "feedback.html";
-};
+  window.location.href = 'feedback.html'
+}
 
 const welcomePage = function () {
-  window.location.href = "welcome-page.html";
-};
-
+  window.location.href = 'welcome-page.html'
+}
