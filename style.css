@@ -175,7 +175,7 @@ ul {
   border-image-slice: 1;
   border-width: 5px;
   border-radius: 100rem;
-  color: trblackansparent;
+  color: black;
   box-shadow: 0 0 6px 0 rgba(157, 96, 212, 0.5);
   border: solid 3px transparent;
   background-image: linear-gradient(
