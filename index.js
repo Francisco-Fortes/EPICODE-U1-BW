@@ -586,9 +586,11 @@ const timer = function () {
       ></path>
     </g>
   </svg>
+  <span class="seconds">Seconds</span>
   <span id="base-timer-label" class="base-timer__label">${formatTime(
     timeLeft,
   )}</span>
+  <span class="remaining">Remaining</span>
 </div>
 `
 
