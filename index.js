@@ -363,7 +363,10 @@ const highlightStars = function (event) {
   let stars = starsContainer.getElementsByTagName('img')
   let clickedStar = event.target.alt
 
-  console.log(stars[clickedStar - 1].alt)
+  for (let i = 0; i < 10; i++) {
+    stars[i].parentNode.classList.remove('selected-stars')
+  }
+
   for (let i = 0; i < clickedStar; i++) {
     stars[i].parentNode.classList.add('selected-stars')
   }
@@ -455,7 +458,7 @@ const resultsPage = function () {
             />
           </svg>
         </div>
-        <div class="rate-us"><p>Rate us</p></div>
+        <div class="rate-us" onclick="giveFeedback()"><p>Rate us</p></div>
       </div>
 
       <div class="right-container">
@@ -591,3 +594,15 @@ const timer = function () {
   }
 };
 
+function setCircleDasharray() {
+  const circleDasharray = `${(
+    calculateTimeFraction() * FULL_DASH_ARRAY
+  ).toFixed(0)} 283`
+  document
+    .getElementById('base-timer-path-remaining')
+    .setAttribute('stroke-dasharray', circleDasharray)
+}
+
+const giveFeedback = function () {
+  window.location.href = 'feedback.html'
+}
