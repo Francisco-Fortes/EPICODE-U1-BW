@@ -353,6 +353,21 @@ console.log(time);
 
 // This function will check if the checkbox on the welcome page has been selected and if not, it will show an error
 
+function activateButton(event) {
+  let button = document.getElementById('proceed-button')
+  if (event.currentTarget.checked) {
+    button.style.backgroundColor = '#00ffff'
+    button.style.boxShadow = '#00ffff 0px 0px 30px'
+    button.style.cursor = 'pointer'
+    button.disabled = false
+  } else if (!event.currentTarget.checked) {
+    button.style.backgroundColor = '#a0a4a4'
+    button.style.boxShadow = 'none'
+    button.disabled = true
+    button.style.cursor = 'none'
+  }
+}
+
 const isCheckboxTicked = function () {
   if (document.getElementById("consent-checkbox").checked) {
     window.location.href = "benchmark.html";
