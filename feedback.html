@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Epicode Benchmark</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="main-container">
+      <div id="logo">
+        <img src="./assets/epicode_logo.png" alt="epicode-logo" />
+      </div>
+      <div class="feedback-container">
+        <h1 id="feedback-h1">Tell us how it's going</h1>
+        <div class="feedback-cell">
+          From 0 to 10, how likely are you to recommend EPICODE to a friend or a
+          colleague?
+        </div>
+        <div class="stars-container" id="stars-container">
+          <div class="stars" id="1" onclick="highlightStars(event)">
+            <img src="./assets/star.svg" alt="1" />
+          </div>
+          <div class="stars" id="2" onclick="highlightStars(event)">
+            <img src="./assets/star.svg" alt="2" />
+          </div>
+          <div class="stars" id="3" onclick="highlightStars(event)">
+            <img src="./assets/star.svg" alt="3" />
+          </div>
+          <div class="stars" id="4" onclick="highlightStars(event)">
+            <img src="./assets/star.svg" alt="4" />
+          </div>
+          <div class="stars" id="5" onclick="highlightStars(event)">
+            <img src="./assets/star.svg" alt="5" />
+          </div>
+          <div class="stars" id="6" onclick="highlightStars(event)">
+            <img src="./assets/star.svg" alt="6" />
+          </div>
+          <div class="stars" id="7" onclick="highlightStars(event)">
+            <img src="./assets/star.svg" alt="7" />
+          </div>
+          <div class="stars" id="8" onclick="highlightStars(event)">
+            <img src="./assets/star.svg" alt="8" />
+          </div>
+          <div class="stars" id="9" onclick="highlightStars(event)">
+            <img src="./assets/star.svg" alt="9" />
+          </div>
+          <div class="stars" id="10" onclick="highlightStars(event)">
+            <img src="./assets/star.svg" alt="10" />
+          </div>
+        </div>
+        <div class="feedback-cell">
+          Leave us an open feedback about your experience so far
+        </div>
+        <div id="feedback-comment">
+          <input
+            type="text"
+            class="feedback-comment"
+            placeholder="Write your comment here"
+          />
+        </div>
+        <div id="feedback-button" onclick="welcomePage()">
+          <div class="feedback-center">MORE INFO</div>
+        </div>
+      </div>
+    </div>
+    <script src="/js/questions.js"></script>
+    <script src="/js/index.js"></script>
+  </body>
+</html>
