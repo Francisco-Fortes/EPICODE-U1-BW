@@ -295,28 +295,9 @@ const resultsPage = function () {
 //Timer function
 const timer = function () {
   const FULL_DASH_ARRAY = 283;
-  const WARNING_THRESHOLD = 10;
-  const ALERT_THRESHOLD = 5;
-
-  const COLOR_CODES = {
-    info: {
-      color: "green",
-    },
-    warning: {
-      color: "orange",
-      threshold: WARNING_THRESHOLD,
-    },
-    alert: {
-      color: "red",
-      threshold: ALERT_THRESHOLD,
-    },
-  };
-
   let TIME_LIMIT = difficulty;
   let timePassed = 0;
   let timeLeft = TIME_LIMIT;
-  let remainingPathColor = COLOR_CODES.info.color;
-
   document.getElementById("app").innerHTML = `
 
 <div class="base-timer">
@@ -326,7 +307,7 @@ const timer = function () {
       <path
         id="base-timer-path-remaining"
         stroke-dasharray="283"
-        class="base-timer__path-remaining ${remainingPathColor}"
+        class="base-timer__path-remaining"
         d="
           M 50, 50
           m -45, 0
@@ -353,8 +334,6 @@ const timer = function () {
       document.getElementById("base-timer-label").innerHTML =
         formatTime(timeLeft);
       setCircleDasharray();
-      setRemainingPathColor(timeLeft);
-
       if (timeLeft === 0) {
         onTimesUp();
       }
@@ -372,25 +351,6 @@ const timer = function () {
     }
 
     return seconds;
-  }
-
-  function setRemainingPathColor(timeLeft) {
-    const { alert, warning, info } = COLOR_CODES;
-    if (timeLeft <= alert.threshold) {
-      document
-        .getElementById("base-timer-path-remaining")
-        .classList.remove(warning.color);
-      document
-        .getElementById("base-timer-path-remaining")
-        .classList.add(alert.color);
-    } else if (timeLeft <= warning.threshold) {
-      document
-        .getElementById("base-timer-path-remaining")
-        .classList.remove(info.color);
-      document
-        .getElementById("base-timer-path-remaining")
-        .classList.add(warning.color);
-    }
   }
 
   function calculateTimeFraction() {
