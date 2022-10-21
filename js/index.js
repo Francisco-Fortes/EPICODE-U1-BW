@@ -1,251 +1,201 @@
-let questionQuantity = selectedQuestions.length
-const randomNumberGenerator = function () {
-  let numberOfQuestions = questions.length
-  let randomNumber = Math.floor(Math.random() * numberOfQuestions)
-  return randomNumber
-}
+//Global variables
+let questionNumber = 0;
+let score = 0;
+let correctAnswerScore =
+  ((selectedQuestions.length - score) / selectedQuestions.length) * 100;
+let wrongScore = selectedQuestions.length - score;
+let wrongAnswersScore = (wrongScore / selectedQuestions.length) * 100;
+const buttonsContainer = document.getElementById("buttons-container");
+const nodeNextButton = document.getElementById("next-button-container");
+const questionCounter = document.getElementById("question-counter");
+const questionText = document.getElementById("question");
+let difficulty;
+const nextButton = document.getElementById("next-button");
+let time = difficulty + 1;
+let timeInDonut = document.getElementById("seconds");
+let clickedButton = "";
+let congratulations = "";
+let subText = "";
+let certificate = "";
 
+//Generate Random Number
+const randomNumberGenerator = function () {
+  let numberOfQuestions = questions.length;
+  let randomNumber = Math.floor(Math.random() * numberOfQuestions);
+  return randomNumber;
+};
+//Picks 14 questions without duplicates and returns an array
 const generateQuestions = function () {
-  let count = 0
-  let randomNumbers = []
+  let count = 0;
+  let randomNumbers = [];
 
   while (count < 14) {
-    let number = randomNumberGenerator()
+    let number = randomNumberGenerator();
     if (!randomNumbers.includes(number)) {
-      randomNumbers.push(number)
-      count++
+      randomNumbers.push(number);
+      count++;
     }
   }
   for (let i = 0; i < randomNumbers.length; i++) {
-    selectedQuestions.push(questions[randomNumbers[i]])
+    selectedQuestions.push(questions[randomNumbers[i]]);
   }
-  return selectedQuestions
-}
+  return selectedQuestions;
+};
 
-// --------------------------------------------------
-let questionNumber = 0
-let score = 0
-let correctAnswerScore =
-  ((selectedQuestions.length - score) / selectedQuestions.length) * 100
-let wrongScore = selectedQuestions.length - score
-let wrongAnswersScore = (wrongScore / selectedQuestions.length) * 100
+const generateAnswers = function () {
+  let arrayMergedAnswers = [];
+  let incorrect_answers = selectedQuestions[questionNumber].incorrect_answers;
+  let correct_answer = selectedQuestions[questionNumber].correct_answer;
 
-// --------------------------------------------------
+  for (i = 0; i < incorrect_answers.length; i++) {
+    arrayMergedAnswers.push(incorrect_answers[i]);
+  }
 
-const buttonsContainer = document.getElementById('buttons-container')
-const nodeNextButton = document.getElementById('next-button-container')
-const questionCounter = document.getElementById('question-counter')
-const questionText = document.getElementById('question')
-let difficulty
+  arrayMergedAnswers.push(correct_answer);
+  arrayMergedAnswers = arrayMergedAnswers.sort((a, b) => 0.5 - Math.random());
+  for (i = 0; i < arrayMergedAnswers.length; i++) {
+    const allButtons = document.createElement("button");
+    buttonsContainer.appendChild(allButtons);
+    allButtons.innerText = arrayMergedAnswers[i];
+    allButtons.classList.add("button-class");
+    allButtons.setAttribute(
+      "onclick",
+      "changeAnswersClass(event); submittedAnswer(event)"
+    );
+  }
+};
+
 const displayQuestion = function () {
-  let x = document.getElementById('x')
+  let x = document.getElementById("x");
   x.innerHTML =
-    'QUESTION ' +
+    "QUESTION " +
     (questionNumber + 1) +
     ` / <span>` +
     selectedQuestions.length +
-    `</span>`
-  let listOfQuestions = selectedQuestions[questionNumber]
-  questionText.innerText = listOfQuestions.question
-  if (selectedQuestions[questionNumber].difficulty === 'hard') {
-    difficulty = 85
-  } else if (selectedQuestions[questionNumber].difficulty === 'medium') {
-    difficulty = 60
-  } else if (selectedQuestions[questionNumber].difficulty === 'easy') {
-    difficulty = 30
+    `</span>`;
+  let listOfQuestions = selectedQuestions[questionNumber];
+  questionText.innerText = listOfQuestions.question;
+  if (selectedQuestions[questionNumber].difficulty === "hard") {
+    difficulty = 85;
+  } else if (selectedQuestions[questionNumber].difficulty === "medium") {
+    difficulty = 60;
+  } else if (selectedQuestions[questionNumber].difficulty === "easy") {
+    difficulty = 30;
   }
-  let arrayMergedAnswers = []
-  let incorrect_answers = selectedQuestions[questionNumber].incorrect_answers
-  let correct_answer = selectedQuestions[questionNumber].correct_answer
-
-  for (i = 0; i < incorrect_answers.length; i++) {
-    arrayMergedAnswers.push(incorrect_answers[i])
-  }
-
-  arrayMergedAnswers.push(correct_answer)
-  console.log(arrayMergedAnswers)
-  arrayMergedAnswers = arrayMergedAnswers.sort((a, b) => 0.5 - Math.random())
-  console.log(arrayMergedAnswers)
-  for (i = 0; i < arrayMergedAnswers.length; i++) {
-    const allButtons = document.createElement('button')
-    buttonsContainer.appendChild(allButtons)
-    allButtons.innerText = arrayMergedAnswers[i]
-    allButtons.classList.add('button-class')
-    allButtons.setAttribute(
-      'onclick',
-      'changeAnswersClass(event); submittedAnswer(event)',
-    )
-  }
-
-  timer()
-}
-
-const nextButton = document.getElementById('next-button')
+  generateAnswers();
+  timer();
+};
 
 const changeAnswersClass = function (event) {
-  const allButtons = document.getElementsByClassName('button-class')
+  const allButtons = document.getElementsByClassName("button-class");
   for (i = 0; i < allButtons.length; i++) {
-    allButtons[i].classList.remove('button-class-selected')
+    allButtons[i].classList.remove("button-class-selected");
   }
-  event.target.classList.add('button-class-selected')
-  nextButton.style.display = 'block'
-
-  const buttonsContainer = document.getElementById('buttons-container')
-  const nodeNextButton = document.getElementById('next-button-container')
-  const questionCounter = document.getElementById('question-counter')
-  const quizzQuestions = []
-  const generateQuestion = function () {
-    let listOfQuestions = questions[2]
-    displayQuestion.innerText = listOfQuestions.question
-  }
-}
-
-const arrayMergedAnswers = []
-let incorrect_answers = questions[1].incorrect_answers
-let correct_answer = questions[1].correct_answer
-for (i = 0; i < incorrect_answers.length; i++) {
-  arrayMergedAnswers.push(incorrect_answers[i])
-}
-arrayMergedAnswers.push(correct_answer)
-
-console.log(arrayMergedAnswers[i])
-const generateAnswers = function () {
-  for (i = 0; i < arrayMergedAnswers.length; i++) {
-    const allButtons = document.createElement('button')
-    buttonsContainer.appendChild(allButtons)
-    allButtons.innerText = arrayMergedAnswers[i]
-    allButtons.classList.add('button-class')
-    allButtons.setAttribute('onclick', 'clickAnswers(event)')
-  }
-}
+  event.target.classList.add("button-class-selected");
+  nextButton.style.display = "block";
+};
 
 const generateNextButton = function () {
-  const nextButton = document.createElement('button')
-  nodeNextButton.appendChild(nextButton)
-  nextButton.innerText = 'Next'
-  nextButton.classList.add('next-button-class')
-  nextButton.classList.toggle('hidden')
-  nextButton.setAttribute('onclick', 'clickNext(event)')
-}
+  const nextButton = document.createElement("button");
+  nodeNextButton.appendChild(nextButton);
+  nextButton.innerText = "Next";
+  nextButton.classList.add("next-button-class");
+  nextButton.classList.toggle("hidden");
+  nextButton.setAttribute("onclick", "clickNext(event)");
+};
 
-// Timer------------------------------------------------------------
-
-let time = difficulty + 1
-let timeInDonut = document.getElementById('seconds')
-
-setInterval(updateCountdown, 1000)
-function updateCountdown() {
-  // console.log(seconds);
-  time--
-  if (time > 0) {
-    timeInDonut.innerText = time
-  } else {
-    timeInDonut.innerText = 'TimeOut!'
-  }
-}
-console.log(time)
-
-// This function will check if the checkbox on the welcome page has been selected and if not, it will show an error
-
+//Proceed Button on/off
 function activateButton(event) {
-  let button = document.getElementById('proceed-button')
+  let button = document.getElementById("proceed-button");
   if (event.currentTarget.checked) {
-    button.style.backgroundColor = '#00ffff'
-    button.style.boxShadow = '#00ffff 0px 0px 30px'
-    button.style.cursor = 'pointer'
-    button.disabled = false
+    button.style.backgroundColor = "#00ffff";
+    button.style.boxShadow = "#00ffff 0px 0px 30px";
+    button.style.cursor = "pointer";
+    button.disabled = false;
   } else if (!event.currentTarget.checked) {
-    button.style.backgroundColor = '#a0a4a4'
-    button.style.boxShadow = 'none'
-    button.disabled = true
-    button.style.cursor = 'default'
+    button.style.backgroundColor = "#a0a4a4";
+    button.style.boxShadow = "none";
+    button.disabled = true;
+    button.style.cursor = "default";
   }
 }
 
 const isCheckboxTicked = function () {
-  if (document.getElementById('consent-checkbox').checked) {
-    window.location.href = 'benchmark.html'
+  if (document.getElementById("consent-checkbox").checked) {
+    window.location.href = "benchmark.html";
   } else {
     alert(
-      'You must agree to answer the questions by yourself before proceeding',
-    )
+      "You must agree to answer the questions by yourself before proceeding"
+    );
   }
-}
+};
 
-let clickedButton = ''
+//Answer selected when Next button clicked, returns the selected answer
 const submittedAnswer = function (event) {
-  clickedButton = event.target.innerText
-  return clickedButton
-}
+  clickedButton = event.target.innerText;
+  return clickedButton;
+};
 
 const clearDOM = function () {
-  clearInterval(timerInterval)
-  questionText.innerHTML = ''
-  buttonsContainer.innerHTML = ''
-  let timer = document.getElementById('app')
-  timer.innerHTML = ''
-}
+  clearInterval(timerInterval);
+  questionText.innerHTML = "";
+  buttonsContainer.innerHTML = "";
+};
 
 const nextQuestion = function () {
-  let correct_answer = selectedQuestions[questionNumber].correct_answer
-  let given_answer = clickedButton
+  let correct_answer = selectedQuestions[questionNumber].correct_answer;
+  let given_answer = clickedButton;
 
   if (questionNumber !== selectedQuestions.length - 1) {
     if (given_answer === correct_answer) {
-      score++
+      score++;
     }
-    clickedButton = ''
-    questionNumber++
-    hideNextButton()
-    clearDOM()
-    displayQuestion()
+    clickedButton = "";
+    questionNumber++;
+    hideNextButton();
+    clearDOM();
+    displayQuestion();
   } else {
     if (given_answer === correct_answer) {
-      score++
+      score++;
     }
-    hideNextButton()
-    clearInterval(timerInterval)
-    resultsPage()
+    hideNextButton();
+    clearInterval(timerInterval);
+    resultsPage();
   }
-}
+};
+
 window.onload = function () {
-  generateQuestions()
-  displayQuestion()
-  return selectedQuestions
-}
+  generateQuestions();
+  displayQuestion();
+};
 
 function hideNextButton() {
-  button = document.getElementById('next-button')
-  console.log(button)
-  button.style.display = 'none'
+  button = document.getElementById("next-button");
+  console.log(button);
+  button.style.display = "none";
 }
 
-//This function will select all the stars
 const highlightStars = function (event) {
-  starsContainer = document.getElementById('stars-container')
-  let stars = starsContainer.getElementsByTagName('img')
-  let clickedStar = event.target.alt
+  starsContainer = document.getElementById("stars-container");
+  let stars = starsContainer.getElementsByTagName("img");
+  let clickedStar = event.target.alt;
 
   for (let i = 0; i < 10; i++) {
-    stars[i].parentNode.classList.remove('selected-stars')
+    stars[i].parentNode.classList.remove("selected-stars");
   }
 
   for (let i = 0; i < clickedStar; i++) {
-    stars[i].parentNode.classList.add('selected-stars')
+    stars[i].parentNode.classList.add("selected-stars");
   }
-}
+};
 
-let congratulations = ''
-let subText = ''
-let certificate = ''
-console.log(score)
-console.log(congratulations)
-console.log((score / selectedQuestions.length) * 100)
+//Clears the DOM and creates Results page
 const resultsPage = function () {
-  clearDOM()
+  clearDOM();
   if ((score / selectedQuestions.length) * 100 >= 60) {
-    congratulations = 'Congratulations!'
-    subText = 'You passed the exam'
+    congratulations = "Congratulations!";
+    subText = "You passed the exam";
     certificate = `<span class="certificate">
     We'll send your certificate
     <br />
@@ -254,16 +204,16 @@ const resultsPage = function () {
     Check your email (including
     <br />
     promotions / spam folder)
-  </span>`
+  </span>`;
   } else {
-    congratulations = 'FAIL!'
-    subText = 'Study more!'
+    congratulations = "FAIL!";
+    subText = "Study more!";
   }
   document.documentElement.style.setProperty(
-    '--a2',
-    (score / selectedQuestions.length) * 50,
-  )
-  document.getElementById('main-container').innerHTML =
+    "--a2",
+    (score / selectedQuestions.length) * 50
+  );
+  document.getElementById("main-container").innerHTML =
     `
   <div class="left-container">
         <div class="content">
@@ -339,36 +289,35 @@ const resultsPage = function () {
     ` Questions</span>
         </div>
       </div>
-      `
-}
+      `;
+};
 
-// -------------------------New Timer----------------------------------------------------------
-
+//Timer function
 const timer = function () {
-  const FULL_DASH_ARRAY = 283
-  const WARNING_THRESHOLD = 10
-  const ALERT_THRESHOLD = 5
+  const FULL_DASH_ARRAY = 283;
+  const WARNING_THRESHOLD = 10;
+  const ALERT_THRESHOLD = 5;
 
   const COLOR_CODES = {
     info: {
-      color: 'green',
+      color: "green",
     },
     warning: {
-      color: 'orange',
+      color: "orange",
       threshold: WARNING_THRESHOLD,
     },
     alert: {
-      color: 'red',
+      color: "red",
       threshold: ALERT_THRESHOLD,
     },
-  }
+  };
 
-  let TIME_LIMIT = difficulty
-  let timePassed = 0
-  let timeLeft = TIME_LIMIT
-  let remainingPathColor = COLOR_CODES.info.color
+  let TIME_LIMIT = difficulty;
+  let timePassed = 0;
+  let timeLeft = TIME_LIMIT;
+  let remainingPathColor = COLOR_CODES.info.color;
 
-  document.getElementById('app').innerHTML = `
+  document.getElementById("app").innerHTML = `
 
 <div class="base-timer">
   <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
@@ -389,90 +338,89 @@ const timer = function () {
   </svg>
   <span class="seconds">Seconds</span>
   <span id="base-timer-label" class="base-timer__label">${formatTime(
-    timeLeft,
+    timeLeft
   )}</span>
   <span class="remaining">Remaining</span>
 </div>
-`
+`;
 
-  startTimer()
+  startTimer();
 
   function startTimer() {
     timerInterval = setInterval(() => {
-      timePassed = timePassed += 1
-      timeLeft = TIME_LIMIT - timePassed
-      document.getElementById('base-timer-label').innerHTML = formatTime(
-        timeLeft,
-      )
-      setCircleDasharray()
-      setRemainingPathColor(timeLeft)
+      timePassed = timePassed += 1;
+      timeLeft = TIME_LIMIT - timePassed;
+      document.getElementById("base-timer-label").innerHTML =
+        formatTime(timeLeft);
+      setCircleDasharray();
+      setRemainingPathColor(timeLeft);
 
       if (timeLeft === 0) {
-        onTimesUp()
+        onTimesUp();
       }
-    }, 1000)
+    }, 1000);
   }
   function onTimesUp() {
-    clearInterval(timerInterval)
-    nextQuestion()
+    clearInterval(timerInterval);
+    nextQuestion();
   }
   function formatTime(time) {
-    let seconds = time
+    let seconds = time;
 
     if (seconds < 10) {
-      seconds = `0${seconds}`
+      seconds = `0${seconds}`;
     }
 
-    return seconds
+    return seconds;
   }
 
   function setRemainingPathColor(timeLeft) {
-    const { alert, warning, info } = COLOR_CODES
+    const { alert, warning, info } = COLOR_CODES;
     if (timeLeft <= alert.threshold) {
       document
-        .getElementById('base-timer-path-remaining')
-        .classList.remove(warning.color)
+        .getElementById("base-timer-path-remaining")
+        .classList.remove(warning.color);
       document
-        .getElementById('base-timer-path-remaining')
-        .classList.add(alert.color)
+        .getElementById("base-timer-path-remaining")
+        .classList.add(alert.color);
     } else if (timeLeft <= warning.threshold) {
       document
-        .getElementById('base-timer-path-remaining')
-        .classList.remove(info.color)
+        .getElementById("base-timer-path-remaining")
+        .classList.remove(info.color);
       document
-        .getElementById('base-timer-path-remaining')
-        .classList.add(warning.color)
+        .getElementById("base-timer-path-remaining")
+        .classList.add(warning.color);
     }
   }
 
   function calculateTimeFraction() {
-    const rawTimeFraction = timeLeft / TIME_LIMIT
-    return rawTimeFraction - (1 / TIME_LIMIT) * (1 - rawTimeFraction)
+    const rawTimeFraction = timeLeft / TIME_LIMIT;
+    return rawTimeFraction - (1 / TIME_LIMIT) * (1 - rawTimeFraction);
   }
 
   function setCircleDasharray() {
     const circleDasharray = `${(
       calculateTimeFraction() * FULL_DASH_ARRAY
-    ).toFixed(0)} 283`
+    ).toFixed(0)} 283`;
     document
-      .getElementById('base-timer-path-remaining')
-      .setAttribute('stroke-dasharray', circleDasharray)
+      .getElementById("base-timer-path-remaining")
+      .setAttribute("stroke-dasharray", circleDasharray);
   }
-}
+};
 
 function setCircleDasharray() {
   const circleDasharray = `${(
     calculateTimeFraction() * FULL_DASH_ARRAY
-  ).toFixed(0)} 283`
+  ).toFixed(0)} 283`;
   document
-    .getElementById('base-timer-path-remaining')
-    .setAttribute('stroke-dasharray', circleDasharray)
+    .getElementById("base-timer-path-remaining")
+    .setAttribute("stroke-dasharray", circleDasharray);
 }
 
 const giveFeedback = function () {
-  window.location.href = 'feedback.html'
-}
+  window.location.href = "feedback.html";
+};
 
 const welcomePage = function () {
-  window.location.href = 'welcome-page.html'
-}
+  window.location.href = "welcome-page.html";
+};
